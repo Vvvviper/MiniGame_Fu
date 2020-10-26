@@ -18,7 +18,7 @@ public class BeGleaned : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        UnityEngine.Debug.Log("有人物捡到道具");
+        //UnityEngine.Debug.Log("有人物捡到道具");
         gleaner glean = collision.gameObject.GetComponent<gleaner>();
         if (glean == null)
             return;

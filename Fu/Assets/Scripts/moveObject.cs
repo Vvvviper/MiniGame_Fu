@@ -20,7 +20,7 @@ public class moveObject : MonoBehaviour
     /// groundLayer代表地面层级,用于射线地面检测
     /// </summary>
     public LayerMask groundLayer;
-    public float test_ground_Length=1.2f;   //向下检测地面的射线长度
+    public float test_ground_Length=12f;   //向下检测地面的射线长度
     [Header("水平移动最大速度")]
     public float max_MoveSpeed = 5.0f;      //水平移动最大速度
     [Header("水平移动加速度")]
@@ -33,7 +33,7 @@ public class moveObject : MonoBehaviour
     public bool moveAble = true;            //是否可以移动
     public bool face = false;               //是否面朝右边
     public bool isJump = false;             //是否处于跳跃状态
-    protected BoxCollider2D collider2D ;    //物体的碰撞器
+    protected CapsuleCollider2D collider2D ;    //物体的碰撞器
     protected Rigidbody2D rig;              //物体的刚体
     public float jumpForce = 500.0f;        //起跳速度            
     
@@ -44,7 +44,7 @@ public class moveObject : MonoBehaviour
     public void init()
     {
         rig = GetComponent<Rigidbody2D>();
-        collider2D = GetComponent<BoxCollider2D>();
+        collider2D = GetComponent<CapsuleCollider2D>();
         if (rig == null && collider2D == null)
         {
             throw new System.Exception("缺失刚体或碰撞体");
@@ -141,7 +141,7 @@ public class moveObject : MonoBehaviour
             return true;
         }
         //三条射线的起始点: 左边,中间,右边
-        Vector2 position1 = transform.position;                                                     
+        Vector2 position1 = new Vector2(transform.position.x, transform.position.y- collider2D.bounds.size.y/2);                                                     
         Vector2 position2 = new Vector2(position1.x - (collider2D.bounds.size.x / 2), position1.y);
         Vector2 position3 = new Vector2(position1.x + (collider2D.bounds.size.x / 2), position1.y);
         //使用Raycast函数向下检测是否触碰groundLayer层
@@ -151,9 +151,9 @@ public class moveObject : MonoBehaviour
         RaycastHit2D hit2 = Physics2D.Raycast(position2, direction, distance, groundLayer);
         RaycastHit2D hit3 = Physics2D.Raycast(position3, direction, distance, groundLayer);
         //使用Debug绘制三条射线,方便调试
-        UnityEngine.Debug.DrawRay(position1, new Vector2(0,-distance), Color.green);
-        UnityEngine.Debug.DrawRay(position2, new Vector2(0,-distance), Color.green);
-        UnityEngine.Debug.DrawRay(position3, new Vector2(0,-distance), Color.green);
+        UnityEngine.Debug.DrawRay(position1, new Vector2(0,-distance), Color.red);
+        UnityEngine.Debug.DrawRay(position2, new Vector2(0,-distance), Color.red);
+        UnityEngine.Debug.DrawRay(position3, new Vector2(0,-distance), Color.red);
 
         if (hit1.collider != null || hit2.collider != null || hit3.collider != null)
         {

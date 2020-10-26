@@ -14,7 +14,7 @@ public class gleaner : MonoBehaviour
     /// <summary>
     /// 道具数量数组应与道具数组严格对齐
     /// </summary>
-    private int[] objectNumber;      //道具数量    
+    public int[] objectNumber;      //道具数量    
 
     private float throw_distance = 0;     //投掷距离
     public float max_throw_distance;      //最远投掷距离
@@ -49,7 +49,8 @@ public class gleaner : MonoBehaviour
     /// </param>
     public void gleanObject(int index)
     {
-        objectNumber[index]+=3;
+        objectNumber[index]+=1;
+        this.GetComponent<MoveController>().lastBoom = index;
     }
     /// <summary>
     /// 使用道具

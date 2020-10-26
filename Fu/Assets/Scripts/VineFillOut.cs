@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class VineFillOut : MonoBehaviour
 {
+    public int relatedBoom = 0;
     public void changeComplete()
     {
         this.GetComponent<Animator>().SetTrigger("VineGrowth");

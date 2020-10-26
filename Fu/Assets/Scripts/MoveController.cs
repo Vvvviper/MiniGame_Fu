@@ -18,6 +18,7 @@ public class MoveController : MonoBehaviour
     gleaner glean;
 
     bool GamePause = false;         //游戏是否暂停
+    public int lastBoom = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -62,7 +63,7 @@ public class MoveController : MonoBehaviour
         }
         else if (Input.GetKeyUp(KeyCode.J))
         {
-            glean.useObject(0);
+            glean.useObject(lastBoom);
         }
         ///更新部分
     }

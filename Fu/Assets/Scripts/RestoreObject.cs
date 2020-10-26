@@ -16,7 +16,10 @@ public class RestoreObject : MonoBehaviour
             TreeAnimation change = collision.gameObject.GetComponent<TreeAnimation>();
             if (change == null)
                 return;
-            change.changeComplete();
+            if (this.GetComponent<BeGleaned>().index == change.relatedBoom)
+            {
+                change.changeComplete();
+            }
             Destroy(this.gameObject);
         }
         else if (collision.tag == "Vine")
@@ -24,7 +27,10 @@ public class RestoreObject : MonoBehaviour
             VineFillOut change = collision.gameObject.GetComponent<VineFillOut>();
             if (change == null)
                 return;
-            change.changeComplete();
+            if (this.GetComponent<BeGleaned>().index == change.relatedBoom)
+            {
+                change.changeComplete();
+            }
             Destroy(this.gameObject);
         }
     }

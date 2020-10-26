@@ -6,6 +6,7 @@ public class TreeAnimation : MonoBehaviour
 {
     private Vector3 localPos;
     private float yAxis;
+    public float relatedBoom = 0;
 
     void Start()
     {
