@@ -203,7 +203,7 @@ public class PlayerMove : moveObject
         UnityEngine.Debug.DrawRay(position1, new Vector2(0, distance), Color.green);
         if (hit.transform != null)
         {
-            UnityEngine.Debug.Log(hit.transform.gameObject.name);
+            //UnityEngine.Debug.Log(hit.transform.gameObject.name);
             return true;
         }
         return false;
@@ -252,8 +252,8 @@ public class PlayerMove : moveObject
     /// </summary>
     public void changeIdle()
     {
-        UnityEngine.Debug.Log("切换动作");
-        int debug = 0;
+        //UnityEngine.Debug.Log("切换动作");
+        //int debug = 0;
         while (true)
         {
             if (animator.GetFloat("IDLE")==3)
@@ -301,7 +301,7 @@ public class PlayerMove : moveObject
     }
     public void openGroundCheck()
     {
-        UnityEngine.Debug.Log("开启跳跃检测");
+        //UnityEngine.Debug.Log("开启跳跃检测");
         checkGround = true;
     }
 }

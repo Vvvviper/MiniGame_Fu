@@ -40,7 +40,7 @@ public class BoomMove : MonoBehaviour
         {
             transform.Translate(new Vector2(-Mathf.Abs(moveSpeed_x) * Time.deltaTime, moveSpeed_y*Time.deltaTime));
         }
-        UnityEngine.Debug.Log("炸弹速度:"+moveSpeed_x);
+        //UnityEngine.Debug.Log("炸弹速度:"+moveSpeed_x);
         moveSpeed_y -= vertical_acceleration * Time.deltaTime;
     }
 
@@ -48,6 +48,7 @@ public class BoomMove : MonoBehaviour
     {
         yield return new WaitForSeconds(3.0f);
         Destroy(gameObject);
+        GameObject.Find("BoomManager").GetComponent<BoomManager>().reenableBoom(GetComponent<BeGleaned>().index);
     }
     /// <summary>
     /// 碰撞到地面时停留

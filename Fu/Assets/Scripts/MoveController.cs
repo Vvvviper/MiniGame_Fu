@@ -17,7 +17,7 @@ public class MoveController : MonoBehaviour
     PlayerMove playerMove;
     gleaner glean;
 
-    bool GamePause = false;         //游戏是否暂停
+    public bool GamePause = false;         //游戏是否暂停
     public int lastBoom = 0;
     // Start is called before the first frame update
     void Start()
@@ -70,6 +70,7 @@ public class MoveController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         CheckInput();
     }
 }

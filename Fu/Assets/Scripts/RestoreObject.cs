@@ -18,7 +18,12 @@ public class RestoreObject : MonoBehaviour
                 return;
             if (this.GetComponent<BeGleaned>().index == change.relatedBoom)
             {
-                change.changeComplete();
+                change.changeComplete(); 
+                GameObject.Find("BoomManager").GetComponent<BoomManager>().FinishOneInteractive(this.GetComponent<BeGleaned>().index);
+            }
+            else
+            {
+                GameObject.Find("BoomManager").GetComponent<BoomManager>().reenableBoom(this.GetComponent<BeGleaned>().index);
             }
             Destroy(this.gameObject);
         }
@@ -30,8 +35,14 @@ public class RestoreObject : MonoBehaviour
             if (this.GetComponent<BeGleaned>().index == change.relatedBoom)
             {
                 change.changeComplete();
+                GameObject.Find("BoomManager").GetComponent<BoomManager>().FinishOneInteractive(this.GetComponent<BeGleaned>().index);
+            }
+            else
+            {
+                GameObject.Find("BoomManager").GetComponent<BoomManager>().reenableBoom(this.GetComponent<BeGleaned>().index);
             }
             Destroy(this.gameObject);
+            Debug.Log("Boom reenable number" + GetComponent<BeGleaned>().index);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

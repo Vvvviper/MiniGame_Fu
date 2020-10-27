@@ -157,13 +157,13 @@ public class moveObject : MonoBehaviour
 
         if (hit1.collider != null || hit2.collider != null || hit3.collider != null)
         {
-            UnityEngine.Debug.Log("踩着:"+hit2.transform.name);
+            //UnityEngine.Debug.Log("踩着:"+hit2.transform.name);
             isJump = false;
             return true;
         }
         else
         {
-            UnityEngine.Debug.Log("脚下没有东西");
+            //UnityEngine.Debug.Log("脚下没有东西");
         }
         return false;
     }

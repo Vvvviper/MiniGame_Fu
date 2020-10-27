@@ -50,6 +50,10 @@ public class gleaner : MonoBehaviour
     public void gleanObject(int index)
     {
         objectNumber[index]+=1;
+        if(this.GetComponent<MoveController>().lastBoom != 0)
+        {
+            GameObject.Find("BoomManager").GetComponent<BoomManager>().reenableBoom(this.GetComponent<MoveController>().lastBoom);
+        }
         this.GetComponent<MoveController>().lastBoom = index;
     }
     /// <summary>
